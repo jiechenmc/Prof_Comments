@@ -1,0 +1,14 @@
+Package        Version
+-------------- -----------
+beautifulsoup4 4.11.1
+bs4            0.0.1
+greenlet       1.1.2
+pip            22.1.2
+playwright     1.22.0
+pyee           8.1.0
+python-dotenv  0.20.0
+setuptools     62.6.0
+soupsieve      2.3.2.post1
+websockets     10.1
+wheel          0.37.1
+yapf           0.32.0
