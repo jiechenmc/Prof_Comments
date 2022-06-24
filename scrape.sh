@@ -1,5 +1,3 @@
-# Restarts the scraping process every 30 minutes
-# watch -n 1800 ./scrape.sh
 LINE=$(cat data/comments.tsv | wc -l)
 LINE=$(( $LINE + 1 ))
 
@@ -7,5 +5,5 @@ LINE=$(( $LINE + 1 ))
 now=$(date "+%H:%M")
 expire=$(date -d "$now 30 minutes" +'%H:%M' )
 echo "Duo OAuth expires in about 30 minutes!"
-echo "Now:\t $now\nExpires: $expire\n"
+echo "Session started at:\t\t $now\nDuo Token Expires in 30 minutes: $expire\n"
 python scrape_comments.py $LINE

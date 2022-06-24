@@ -34,7 +34,7 @@ async def main():
             f"Session started at: {now:%I:%M}\nDuo Token Expires in 30 minutes: {expire:%I:%M}",
         )
 
-        with open("data/routes.tsv", "r") as f:
+        with open("./_routes.tsv", "r") as f:
             # [start:]
             # Begins at start + 1 from routes.tsv
             f = f.readlines()[start - 1:]
@@ -50,7 +50,7 @@ async def main():
 
                     ## scrape content from page
                     res = await scrape_content(soup)
-                    with open("data/comments.tsv", "a") as f:
+                    with open("./_comments.tsv", "a") as f:
                         string = f"{line[0]}\t{line[1]}\t{line[2]}\t{line[3]}\t{line[4]}\t{res}\n"
                         f.write(string)
                 except (TimeoutError, Error):

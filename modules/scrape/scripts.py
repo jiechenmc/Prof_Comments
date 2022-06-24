@@ -31,7 +31,7 @@ async def login(page):
 async def scrape_routes_to_file(soup, i, file_name):
     header = True
     for row in soup.find_all("tr"):
-        with open(file_name, "a+") as f:
+        with open("./" + file_name, "a+") as f:
             term = file_name.replace(".tsv", "").replace("_", " ")
             if header:
                 row_content = row.text.split("\n\n")[1:]
