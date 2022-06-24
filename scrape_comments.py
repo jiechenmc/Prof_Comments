@@ -24,7 +24,7 @@ async def main():
         await page.goto("https://classie-evals.stonybrook.edu/")
 
         # Logging in to the page
-        # Duo tokens expires every 20 minutes
+        # Duo tokens expires every 30 minutes
         await login(page)
         await asyncio.sleep(10)
 
