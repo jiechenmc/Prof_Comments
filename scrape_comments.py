@@ -31,7 +31,7 @@ async def main():
         now = dt.now()
         expire = now + timedelta(minutes=30)
         print(
-            f"Session started at: {now:%I:%M}\nDuo Token Expires in 20 minutes: {expire:%I:%M}"
+            f"Session started at: {now:%I:%M}\nDuo Token Expires in 30 minutes: {expire:%I:%M}",
         )
 
         with open("data/routes.tsv", "r") as f:
