@@ -29,7 +29,7 @@ async def main():
         await asyncio.sleep(10)
 
         now = dt.now()
-        expire = now + timedelta(minutes=20)
+        expire = now + timedelta(minutes=30)
         print(
             f"Session started at: {now:%I:%M}\nDuo Token Expires in 20 minutes: {expire:%I:%M}"
         )
