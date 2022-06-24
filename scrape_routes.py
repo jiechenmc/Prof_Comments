@@ -5,8 +5,13 @@ from bs4 import BeautifulSoup
 from modules.scrape.scripts import page_html, login, scrape_routes_to_file
 
 
+###
+#
 # Sample Execution
+# python scrape_routes.py term url lastPageNumber
 # python scrape_routes.py Spring_2022 https://classie-evals.stonybrook.edu/\?currentTerm\=1224\&page\= 73
+#
+###
 async def main():
     # Term Url sys.argv[2]
     # https://classie-evals.stonybrook.edu/?currentTerm=1224&page=
