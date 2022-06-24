@@ -10,7 +10,7 @@ do
     sleep 1200
     kill $last_pid
 
-    if [$(cat data/comments.tsv | wc -l) -eq $(cat data/routes.tsv | wc -l)]
+    if [[ $(cat data/comments.tsv | wc -l) -eq $(cat data/routes.tsv | wc -l) ]]
     then
         exit 0
     fi
