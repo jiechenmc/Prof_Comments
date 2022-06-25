@@ -1,4 +1,4 @@
-LINE=$(cat data/comments.tsv | wc -l)
+LINE=$(cat ./_comments.tsv | wc -l)
 LINE=$(( $LINE + 1 ))
 
 # Running the Python file

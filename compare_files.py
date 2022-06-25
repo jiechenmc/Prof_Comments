@@ -1,8 +1,8 @@
 # Compare comments.tsv with route.tsv to ensure that every class was scraped
-with open("data/routes.tsv", "r") as routes:
+with open("./_routes.tsv", "r") as routes:
     routesTSV = routes.readlines()
 
-with open("data/comments.tsv", "r") as comments:
+with open("./_comments.tsv", "r") as comments:
     commentsTSV = comments.readlines()
 
 for i, data in enumerate(routesTSV):
