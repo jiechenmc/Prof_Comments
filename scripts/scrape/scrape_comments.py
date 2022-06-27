@@ -3,7 +3,7 @@ import sys
 from datetime import datetime as dt
 from datetime import timedelta
 from playwright.async_api import async_playwright
-from scripts.scrape.scripts import login, page_html, scrape_content
+from scripts import login, page_html, scrape_content
 from bs4 import BeautifulSoup
 from playwright._impl._api_types import TimeoutError, Error
 
@@ -12,7 +12,7 @@ from playwright._impl._api_types import TimeoutError, Error
 #
 # Sample Execution
 # python scrape_comments.py route_src result_dest start
-# python scrape_comments.py ./_routes.tsv ./_comments.tsv 1
+# python scrape_comments.py ./routes.tsv ./data.tsv 1
 # Scraping will start from line 1 of routes.tsv
 # Note: if line 1 is the header row; start from line 2 instead.
 ###
