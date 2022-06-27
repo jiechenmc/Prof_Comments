@@ -6,4 +6,4 @@ now=$(date "+%H:%M")
 expire=$(date -d "$now 30 minutes" +'%H:%M' )
 echo "Duo OAuth expires in about 30 minutes!"
 echo "Session started at:\t\t $now\nDuo Token Expires in 30 minutes: $expire\n"
-python scrape_comments.py $LINE
+python scrape_comments.py "./_routes" "./_comments.tsv" $LINE

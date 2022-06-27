@@ -3,7 +3,7 @@ import sys
 from datetime import datetime as dt
 from datetime import timedelta
 from playwright.async_api import async_playwright
-from modules.scrape.scripts import login, page_html, scrape_content
+from scripts.scrape.scripts import login, page_html, scrape_content
 from bs4 import BeautifulSoup
 from playwright._impl._api_types import TimeoutError, Error
 
@@ -11,13 +11,15 @@ from playwright._impl._api_types import TimeoutError, Error
 ###
 #
 # Sample Execution
-# python scrape_comments.py start
-# python scrape_comments.py 1
+# python scrape_comments.py route_src result_dest start
+# python scrape_comments.py ./_routes.tsv ./_comments.tsv 1
 # Scraping will start from line 1 of routes.tsv
 # Note: if line 1 is the header row; start from line 2 instead.
 ###
 async def main():
-    start = int(sys.argv[1])
+    src = sys.argv[1]
+    dest = sys.argv[2]
+    start = int(sys.argv[3])
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         page = await browser.new_page()
@@ -34,7 +36,7 @@ async def main():
             f"Session started at: {now:%I:%M}\nDuo Token Expires in 30 minutes: {expire:%I:%M}",
         )
 
-        with open("./_routes.tsv", "r") as f:
+        with open(src, "r") as f:
             # [start:]
             # Begins at start + 1 from routes.tsv
             f = f.readlines()[start - 1:]
@@ -50,7 +52,7 @@ async def main():
 
                     ## scrape content from page
                     res = await scrape_content(soup)
-                    with open("./_comments.tsv", "a") as f:
+                    with open(dest, "a") as f:
                         string = f"{line[0]}\t{line[1]}\t{line[2]}\t{line[3]}\t{line[4]}\t{res}\n"
                         f.write(string)
                 except (TimeoutError, Error):

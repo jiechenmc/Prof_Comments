@@ -2,7 +2,7 @@ import asyncio
 import sys
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
-from modules.scrape.scripts import page_html, login, scrape_routes_to_file
+from scripts.scrape.scripts import page_html, login, scrape_routes_to_file
 
 
 ###
