@@ -19,7 +19,7 @@ tags_metadata = [
         "name":
         "Course Data",
         "description":
-        "You can search by Section: **CSE214**, Course Name: **Data Structures**, Instructor Name: **Tripathi**, or by Term: **Spring 2022**",
+        "All queries are relative unless the exact match is entered; **'John' will match 'Carter Johnson', 'John Bailyn', etc...**",
     },
 ]
 
@@ -97,7 +97,6 @@ async def root():
 @app.get("/api/section/", response_model=list[Record], tags=["Course Data"])
 async def get_by_section(section: str = Query(
     default=...,
-    min_length=6,
     max_length=10,
     regex=input_validator,
     description="Search by course number: **CSE214**")):
