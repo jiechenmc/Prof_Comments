@@ -53,8 +53,8 @@ app.add_middleware(
 class Record(BaseModel):
     Section: str
     Term: str
-    Course_Title: str | None
-    Instructors: str | None
+    Course_Title: str
+    Instructors: str
     Comments: str
     Grades: str
 
