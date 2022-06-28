@@ -18,3 +18,7 @@ with open("data.json", "r") as f:
     for line in f:
         data = json.loads(line)
         collection.insert_one(data)
+
+# Cleaning up ...
+os.remove("data.json")
+print("Finished migrating!")

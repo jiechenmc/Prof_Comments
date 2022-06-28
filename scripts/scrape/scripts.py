@@ -28,34 +28,38 @@ async def login(page):
     print("Waiting 10 seconds for DUO Authentication on device ...")
 
 
-async def scrape_routes_to_file(soup, i, file_name):
-    header = True
+async def scrape_routes_to_file(soup, i, file_name, header=True):
     for row in soup.find_all("tr"):
-        with open("./" + file_name, "a+") as f:
+        with open("./" + "routes.tsv", "a+") as f:
             term = file_name.replace(".tsv", "").replace("_", " ")
-            if header:
-                row_content = row.text.split("\n\n")[1:]
-                row_content = list(map(str.strip, row_content))
-                sec = row_content[0]
-                title = row_content[1]
-                instructor = row_content[2]
-                f.write(f"{i}\t{sec}\tTerm\t{title}\t{instructor}\tRoute\n")
-                header = False
-            else:
-                row_content = row.text.split("\n\n")[1:-1]
-                row_content = list(map(str.strip, row_content))
-                route = row.find("a").get("href")
-
-                sec = row_content[0]
-                title = row_content[1]
-
-                try:
+            try:
+                if header:
+                    row_content = row.text.split("\n\n")[1:]
+                    row_content = list(map(str.strip, row_content))
+                    sec = row_content[0]
+                    title = row_content[1]
                     instructor = row_content[2]
-                except IndexError:
-                    instructor = ""
+                    f.write(
+                        f"{i}\t{sec}\tTerm\t{title}\t{instructor}\tRoute\n")
+                    header = False
+                else:
+                    row_content = row.text.split("\n\n")[1:-1]
+                    row_content = list(map(str.strip, row_content))
+                    route = row.find("a").get("href")
 
-                res = f"{i}\t{sec}\t{term}\t{title}\t{instructor}\t{route}\n"
-                f.write(res)
+                    sec = row_content[0]
+                    title = row_content[1]
+
+                    try:
+                        instructor = row_content[2]
+                    except IndexError:
+                        instructor = ""
+
+                    res = f"{i}\t{sec}\t{term}\t{title}\t{instructor}\t{route}\n"
+                    f.write(res)
+            except AttributeError:
+                # AttributeError only on header rows
+                pass
 
 
 async def parse_script_tag(scripts):
@@ -92,7 +96,7 @@ async def scrape_content(soup):
 
         valuable.extend(improve)
 
-        return {"comments": valuable, "grades": grades}
+        return valuable, grades
 
     except AttributeError:
         # This happens when grade distribution is not available
@@ -106,7 +110,7 @@ async def scrape_content(soup):
 
             additional = [comment.text.strip() for comment in comments3]
 
-            return {"comments": additional, "grades": grades}
+            return additional, []
         except Exception:
             # Any furthur Exception means no content.
-            return {"comments": ""}
+            return [], []

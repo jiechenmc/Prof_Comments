@@ -32,10 +32,12 @@ async def main():
         await asyncio.sleep(10)
 
         # Ready to scrape routes
+        header = True
         for i in range(1, end):
             await page.goto(f"{url}{i}", timeout=0)
             soup = BeautifulSoup(await page_html(page, "table"), "html.parser")
-            await scrape_routes_to_file(soup, i, term)
+            await scrape_routes_to_file(soup, i, term, header)
+            header = False
 
         # Exiting ...
         await browser.close()
