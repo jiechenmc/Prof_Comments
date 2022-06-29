@@ -99,7 +99,7 @@ async def get_by_section(section: str = Query(
     default=...,
     max_length=10,
     regex=input_validator,
-    description="Search by course number: **CSE214**")):
+    description="Search by course number; ex: **CSE214**")):
 
     return JSONResponse(find(collection, "Section", section))
 
@@ -108,7 +108,7 @@ async def get_by_section(section: str = Query(
 async def get_by_course(course: str = Query(
     default=...,
     regex=input_validator,
-    description="Search by course name: **COMPUTER SCIENCE II**")):
+    description="Search by course name; ex: **COMPUTER SCIENCE II**")):
 
     return JSONResponse(find(collection, "Course Title", course))
 
@@ -117,7 +117,7 @@ async def get_by_course(course: str = Query(
 async def get_by_instructor(name: str = Query(
     default=...,
     regex=input_validator,
-    description="Search by instructor name: **Ahmad Esmaili**")):
+    description="Search by instructor name; ex: **Ahmad Esmaili**")):
 
     return JSONResponse(find(collection, "Instructors", name))
 
@@ -126,6 +126,6 @@ async def get_by_instructor(name: str = Query(
 async def get_by_term(term: str = Query(
     default=...,
     regex=input_validator,
-    description="Search by term: **Summer 2014**")):
+    description="Search by term; ex: **Summer 2014**")):
 
     return JSONResponse(find(collection, "Term", term))
