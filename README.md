@@ -1,4 +1,4 @@
-# Prof_Comments
+# Prof Comments and Grades
 
 RESTful API for comments and grade distribution data from SBUClassieEval
 
@@ -15,12 +15,12 @@ uvicorn app:app
 ```
 
 ## Scraping data locally 
-- under work
 - To scrape, create a .env file that looks like the example.env with fields filled in.
 - Visit the scripts/scrape folder for more info
-
-```bash
-
+- Altough the file is called scrape_comments, it scrapes grade distribution data as well!
+```python
+python scrape_routes.py ...
+python scrape_comments.py ...
 ```
 
 ##### For documentations please visit: https://prof-comments.herokuapp.com/docs
