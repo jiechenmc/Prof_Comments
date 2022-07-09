@@ -9,7 +9,7 @@ RESTful API for comments and grade distribution data from SBUClassieEval
 docker compose up
 ```
 #### Python
-```python
+```bash
 pip install -r requirements.txt
 uvicorn app:app
 ```
@@ -18,7 +18,7 @@ uvicorn app:app
 - To scrape, create a .env file that looks like the example.env with fields filled in.
 - Visit the scripts/scrape folder for more info
 - Altough the file is called scrape_comments, it scrapes grade distribution data as well!
-```python
+```bash
 python scrape_routes.py ...
 python scrape_comments.py ...
 ```
