@@ -2,7 +2,8 @@
 
 RESTful API for comments and grade distribution data from SBUClassieEval
 
-##Easily spin up a dev session with
+## Easily spin up a dev session with
+
 #### Docker
 ```bash
 docker compose up
