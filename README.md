@@ -17,7 +17,7 @@ uvicorn app:app
 ## Scraping data locally 
 - under work
 - To scrape, create a .env file that looks like the example.env with fields filled in.
-- Visit the scrape folder for more info
+- Visit the scripts folder for more info
 
 ```bash
 
