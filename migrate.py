@@ -17,8 +17,8 @@ collection = db.get_collection(os.getenv("mongo_collection"))
 with open("data.json", "r") as f:
     for line in f:
         data = json.loads(line)
-        collection.insert_one(data)
+        collection.update_one(data, upsert=True)
 
-# Cleaning up ...
-os.remove("data.json")
-print("Finished migrating!")
+# # Cleaning up ...
+# os.remove("data.json")
+# print("Finished migrating!")

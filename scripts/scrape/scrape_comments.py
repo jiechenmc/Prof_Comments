@@ -52,7 +52,7 @@ async def main():
 
                     ## scrape content from page
                     res = await scrape_content(soup)
-                    with open(dest, "a") as f:
+                    with open(dest, "a+") as f:
                         string = f"{line[0]}\t{line[1]}\t{line[2]}\t{line[3]}\t{line[4]}\t{res[0]}\t{res[1]}\n"
                         f.write(string)
                 except (TimeoutError, Error):
