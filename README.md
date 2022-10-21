@@ -1,5 +1,7 @@
 # Prof Comments and Grades
 
+## Will not work anymore after Heroku retires free tier :(
+
 RESTful API for comments and grade distribution data from SBUClassieEval
 
 ## Easily spin up a dev session with
