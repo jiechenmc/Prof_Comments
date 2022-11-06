@@ -4,7 +4,7 @@
 ## Server will spindown when Heroku kills free tier
 ##
 
-RESTful API for comments and grade distribution data from SBUClassieEval
+Open API for comments and grade distribution data from SBUClassieEval
 
 ## Easily spin up a dev session with
 
